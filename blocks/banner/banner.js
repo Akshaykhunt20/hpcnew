@@ -19,13 +19,12 @@ const getBannerQuery = `query{
 `;
 
 export default async function decorate(banner) {
-
   const homePageCollection = await performMonolithGraphQLQuery(
-      getBannerQuery,
-      {},
-      true,
-      false,
-    );
+    getBannerQuery,
+    {},
+    true,
+    false,
+  );
 
   const homepageBannerCollectionData = homePageCollection.data.getHomeMainBanner;
 
@@ -41,25 +40,26 @@ export default async function decorate(banner) {
   banner.append(secondaryBannerContainer);
 }
 
-function createPrimaryBanner(primaryBannerCollection){
+function createPrimaryBanner(primaryBannerCollection) {
   // Create a container for banners
   const bannerContainer = document.createElement('div');
   bannerContainer.classList.add('primary-banner-container');
 
   // Loop through banner collection and create banner items
-  for (const bannerItem of primaryBannerCollection) {
+  primaryBannerCollection.forEach((bannerItem) => {
     const bannerElement = document.createElement('div');
     bannerElement.classList.add('banner-item');
-    
+
     // Create and set up the image element
-    const bannerImageHtml = createImageStructure(bannerItem.banner_image,bannerItem.image_alt);
+    const bannerImageHtml = createImageStructure(bannerItem.banner_image, bannerItem.image_alt);
     bannerElement.appendChild(bannerImageHtml);
+
     bannerContainer.appendChild(bannerElement);
-  }
+  });
   return bannerContainer;
 }
 
-function createSecondaryBanner(secondaryBannerContainer){
+function createSecondaryBanner(secondaryBannerContainer) {
   // Create a container for banners
   const secondBannerContainer = document.createElement('div');
   secondBannerContainer.classList.add('secondary-banner-container');
@@ -70,22 +70,23 @@ function createSecondaryBanner(secondaryBannerContainer){
   const leftSideBootom = document.createElement('div');
   leftSideBootom.classList.add('secondary-banner-left-side-images-bottom');
 
-  console.log("createSecondaryBanner",createSecondaryBanner);
-  if(secondaryBannerContainer.length > 0){
-    for (const bannerItem of secondaryBannerContainer) {
+  if (secondaryBannerContainer.length > 0) {
+    secondaryBannerContainer.forEach((bannerItem) => {
       const secondBannerElement = document.createElement('div');
       secondBannerElement.classList.add('banner-item');
-      const bannerImageHtml = createImageStructure(bannerItem.banner_image,bannerItem.banner_name);
+
+      const bannerImageHtml = createImageStructure(bannerItem.banner_image, bannerItem.banner_name);
       secondBannerElement.appendChild(bannerImageHtml);
+
       secondBannerContainer.appendChild(secondBannerElement);
-    }
+    });
   }
   secondBannerContainer.appendChild(leftSideTop);
   secondBannerContainer.appendChild(leftSideBootom);
   return secondBannerContainer;
 }
 
-function createImageStructure(bannerItem,bannerAlt){
+function createImageStructure(bannerItem, bannerAlt) {
   const bannerImage = document.createElement('img');
   bannerImage.src = bannerItem;
   bannerImage.alt = bannerAlt;
