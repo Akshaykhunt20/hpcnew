@@ -478,3 +478,20 @@ body.columns main > .section:empty {
 main[hidden] {
   display: none !important;
 }
+
+
+
+input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type*="date"], input[type="email"] {
+    background: #fff;
+    background-clip: padding-box;
+    border: 1px solid #9ab3b8;
+    border-radius: 1px;
+    font-family: 'DIN', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    height: 40px;
+    line-height: 1.42857143;
+    padding: 0 9px;
+    vertical-align: baseline;
+    width: 100%;
+    box-sizing: border-box;
+}

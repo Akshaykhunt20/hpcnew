@@ -1,73 +1,60 @@
-footer {
-    background-color: var(--color-neutral-100);
-    font: var(--type-body-2-default-font);
-    letter-spacing: var(--type-body-2-default-letter-spacing);
+.footer-wrapper{
+    background-color: #011D23;
 }
-
-footer .footer > div {
-    margin: auto;
-    max-width: 1200px;
-    padding: 40px 24px 24px;
+.footer_links{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
-
-footer .footer p {
-    margin: 0;
+.footer-bottom-wrapper {
+    background-color: #032830;
+    width: 100%;
+    margin-top: 30px;
 }
-
-.storeview-switcher-button {
-    background: transparent;
-    padding-left: 0;
+.footer_social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
 }
-
-.storeview-modal-storeview-title {
-    margin-bottom: var(--spacing-xxbig);
-    padding-inline-start: var(--spacing-xbig);
+.footer_app_links {
+    display: flex;
+    gap: 5px;
+    margin-top: 20px;
+    justify-content: center;
 }
-
-.modal .close-button {
-    top: 40px !important;
-    right: 40px !important;
+input#newsletter {
+    height: 48px;
+    border-radius: 6px 0 0 6px;
+    border-color: #fff;
+    padding-left: 14px;
 }
-
-.storeview-single-store {
-    list-style-type: none;
-}
-
-.storeview-selection .storeview-multiple-stores {
-    list-style-image: url("../../icons/chevron-right.svg");
-    list-style-position: inside;
-}
-
-.storeview-selection > li {
-    margin-bottom: var(--spacing-small);
-}
-
-.storeview-multiple-stores > ul {
-    position: relative;
+form#newsletter-validate-detail {
+    display: flex;
+    flex-flow: row;
     width: 100%;
 }
 
-.storeview-multiple-stores > ul > li {
-    list-style: none;
-    display: none;
+.fieldset.field.newsletter{
+    min-width: 220px;
+    margin: 0;
+    width: 100%;
+    display: table-cell;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
 }
-
-.storeview-multiple-stores[aria-expanded="true"] {
-    list-style-image: url("../../icons/chevron-down.svg");
+.footer_links .footer-col .block-title a{
+    margin: 25px 0 0;
+    font-size: 14px;
+    color: #c4d82e;
+    font-weight: 600;
 }
-
-.storeview-multiple-stores[aria-expanded="true"] > ul {
-    padding-left: 0;
+.footer_links .footer-col .links a {
+    color: #fff;
 }
-
-.storeview-multiple-stores[aria-expanded="true"] > ul > li {
-    display: block;
-    list-style-type: none;
-    margin-bottom: var(--spacing-small);
-}
-
-@media (width >= 900px) {
-    footer .footer > div {
-        padding: 40px 32px 24px;
-    }
+.footer_links .footer-col li {
+    color: #fff;
+    margin-bottom: 8px;
 }
