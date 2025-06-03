@@ -7,7 +7,7 @@ import { events } from '@dropins/tools/event-bus.js';
 import { publishShoppingCartViewEvent } from '@dropins/storefront-cart/api.js';
 
 import { getMetadata } from '../../scripts/aem.js';
-import { loadFragment } from '../fragment/fragment.js';
+import { loadFragment,loadCustomMenu } from '../fragment/fragment.js';
 
 import renderAuthCombine from './renderAuthCombine.js';
 import { renderAuthDropdown } from './renderAuthDropdown.js';
@@ -164,6 +164,12 @@ function setupSubmenu(navSection) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
+
+  const menu = document.createElement('div');
+  menu.classList.add('custom-menu-wrapper');
+  const custommenuhtml = await loadCustomMenu('/nav'); 
+  menu.innerHTML = custommenuhtml || ''; 
+
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
@@ -283,11 +289,11 @@ export default async function decorate(block) {
   </div>
   `);
 
-  navTools.append(search);
+  navSections.append(search);
 
-  const searchPanel = navTools.querySelector('.nav-search-panel');
+  const searchPanel = navSections.querySelector('.nav-search-panel');
 
-  const searchButton = navTools.querySelector('.nav-search-button');
+  const searchButton = navSections.querySelector('.nav-search-button');
 
   const searchInput = searchPanel.querySelector('input');
 
@@ -306,7 +312,7 @@ export default async function decorate(block) {
     }
   }
 
-  navTools.querySelector('.nav-search-button').addEventListener('click', () => {
+  navSections.querySelector('.nav-search-button').addEventListener('click', () => {
     if (isDesktop.matches) {
       toggleAllNavSections(navSections);
       overlay.classList.remove('show');
@@ -328,6 +334,7 @@ export default async function decorate(block) {
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
+  navWrapper.append(menu);
   block.append(navWrapper);
 
   navWrapper.addEventListener('mouseout', (e) => {
@@ -349,13 +356,8 @@ export default async function decorate(block) {
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
     </button>`;
-  hamburger.addEventListener('click', () => {
-    navWrapper.classList.toggle('active');
-    overlay.classList.toggle('show');
-    toggleMenu(nav, navSections);
-  });
+  
   nav.prepend(hamburger);
-  nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));

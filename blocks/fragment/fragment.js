@@ -6,7 +6,8 @@
  */
 
 import { decorateMain } from '../../scripts/scripts.js';
-import { getRootPath } from '../../scripts/configs.js';
+import { getRootPath, getConfigValue } from '../../scripts/configs.js';
+
 import {
   loadSections,
 } from '../../scripts/aem.js';
@@ -24,7 +25,6 @@ export async function loadFragment(path) {
     if (resp.ok) {
       const main = document.createElement('main');
       main.innerHTML = await resp.text();
-
       // reset base path for media to fragment base
       const resetAttributeBase = (tag, attr) => {
         main.querySelectorAll(`${tag}[${attr}^="./media_"]`).forEach((elem) => {
@@ -37,6 +37,26 @@ export async function loadFragment(path) {
       decorateMain(main);
       await loadSections(main);
       return main;
+    }
+  }
+  return null;
+}
+
+export async function loadCustomMenu(path) {
+  if (path && path.startsWith('/')) {
+    const root = getRootPath().replace(/\/$/, '');
+    const url = `${root}${path}.plain.html`;
+    const resp = await fetch(url);
+    if (resp.ok) {
+      
+      if (path === '/nav') {
+          const storeViewCode = getConfigValue('headers.cs.Magento-Store-View-Code');
+          const storeUrl = getConfigValue('analytics.store-url');
+          const menu_url = `${storeUrl}/media/bytestechnolab/edge/${storeViewCode}/header_menu.html`;
+          const menu_url_resp = await fetch(menu_url);
+          const menu_html = await menu_url_resp.text();
+          return menu_html;
+      }
     }
   }
   return null;
