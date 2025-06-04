@@ -48,14 +48,13 @@ export async function loadCustomMenu(path) {
     const url = `${root}${path}.plain.html`;
     const resp = await fetch(url);
     if (resp.ok) {
-      
       if (path === '/nav') {
-          const storeViewCode = getConfigValue('headers.cs.Magento-Store-View-Code');
-          const storeUrl = getConfigValue('analytics.store-url');
-          const menu_url = `${storeUrl}/media/bytestechnolab/edge/${storeViewCode}/header_menu.html`;
-          const menu_url_resp = await fetch(menu_url);
-          const menu_html = await menu_url_resp.text();
-          return menu_html;
+        const storeViewCode = getConfigValue('headers.cs.Magento-Store-View-Code');
+        const storeUrl = getConfigValue('analytics.store-url');
+        const menuUrl = `${storeUrl}/media/bytestechnolab/edge/${storeViewCode}/header_menu.html`;
+        const menUrlResp = await fetch(menuUrl);
+        const menuHtml = await menUrlResp.text();
+        return menuHtml;
       }
     }
   }

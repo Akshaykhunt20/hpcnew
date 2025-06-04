@@ -7,7 +7,7 @@ import { events } from '@dropins/tools/event-bus.js';
 import { publishShoppingCartViewEvent } from '@dropins/storefront-cart/api.js';
 
 import { getMetadata } from '../../scripts/aem.js';
-import { loadFragment,loadCustomMenu } from '../fragment/fragment.js';
+import { loadFragment, loadCustomMenu } from '../fragment/fragment.js';
 
 import renderAuthCombine from './renderAuthCombine.js';
 import { renderAuthDropdown } from './renderAuthDropdown.js';
@@ -164,11 +164,10 @@ function setupSubmenu(navSection) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-
   const menu = document.createElement('div');
   menu.classList.add('custom-menu-wrapper');
-  const custommenuhtml = await loadCustomMenu('/nav'); 
-  menu.innerHTML = custommenuhtml || ''; 
+  const custommenuhtml = await loadCustomMenu('/nav');
+  menu.innerHTML = custommenuhtml || '';
 
   // load nav as fragment
   const navMeta = getMetadata('nav');
@@ -356,7 +355,7 @@ export default async function decorate(block) {
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
     </button>`;
-  
+
   nav.prepend(hamburger);
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
