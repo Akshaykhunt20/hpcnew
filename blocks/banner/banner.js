@@ -18,26 +18,40 @@ const getBannerQuery = `query{
 }
 `;
 
-export default async function decorate(banner) {
-  const homePageCollection = await performMonolithGraphQLQuery(
-    getBannerQuery,
-    {},
-    true,
-    false,
-  );
+export default function decorate(banner) {
+  // Add loading state immediately
+  const loadingPlaceholder = document.createElement('div');
+  loadingPlaceholder.classList.add('banner-loading');
+  banner.appendChild(loadingPlaceholder);
 
-  const homepageBannerCollectionData = homePageCollection.data.getHomeMainBanner;
+  // Fetch data in background
+  fetchBannerData(banner);
+}
 
-  const primaryBannerCollection = homepageBannerCollectionData.primary_banner_items;
-  const secondaryBannerCollection = homepageBannerCollectionData.secondary_banner_items;
+async function fetchBannerData(banner) {
+  try {
+    const homePageCollection = await performMonolithGraphQLQuery(
+      getBannerQuery,
+      {},
+      true,
+      false,
+    );
 
-  const primaryBannerContainer = createPrimaryBanner(primaryBannerCollection);
-  const secondaryBannerContainer = createSecondaryBanner(secondaryBannerCollection);
+    const homepageBannerCollectionData = homePageCollection.data.getHomeMainBanner;
+    const primaryBannerCollection = homepageBannerCollectionData.primary_banner_items;
+    const secondaryBannerCollection = homepageBannerCollectionData.secondary_banner_items;
 
-  // Replace the existing banner content
-  banner.innerHTML = '';
-  banner.append(primaryBannerContainer);
-  banner.append(secondaryBannerContainer);
+    // Create banners only after data is ready
+    const primaryBannerContainer = createPrimaryBanner(primaryBannerCollection);
+    const secondaryBannerContainer = createSecondaryBanner(secondaryBannerCollection);
+
+    // Replace loading state with actual content
+    banner.innerHTML = '';
+    banner.append(primaryBannerContainer);
+    banner.append(secondaryBannerContainer);
+  } catch (error) {
+    throw error;
+  }
 }
 
 function createPrimaryBanner(primaryBannerCollection) {
