@@ -19,25 +19,25 @@ const getBannerQuery = `query{
 `;
 
 export default async function decorate(banner) {
-  // const homePageCollection = await performMonolithGraphQLQuery(
-  //   getBannerQuery,
-  //   {},
-  //   true,
-  //   false,
-  // );
+  const homePageCollection = await performMonolithGraphQLQuery(
+    getBannerQuery,
+    {},
+    true,
+    false,
+  );
 
-  // const homepageBannerCollectionData = homePageCollection.data.getHomeMainBanner;
+  const homepageBannerCollectionData = homePageCollection.data.getHomeMainBanner;
 
-  // const primaryBannerCollection = homepageBannerCollectionData.primary_banner_items;
-  // const secondaryBannerCollection = homepageBannerCollectionData.secondary_banner_items;
+  const primaryBannerCollection = homepageBannerCollectionData.primary_banner_items;
+  const secondaryBannerCollection = homepageBannerCollectionData.secondary_banner_items;
 
-  // const primaryBannerContainer = createPrimaryBanner(primaryBannerCollection);
-  // const secondaryBannerContainer = createSecondaryBanner(secondaryBannerCollection);
+  const primaryBannerContainer = createPrimaryBanner(primaryBannerCollection);
+  const secondaryBannerContainer = createSecondaryBanner(secondaryBannerCollection);
 
-  // // Replace the existing banner content
-  // banner.innerHTML = '';
-  // banner.append(primaryBannerContainer);
-  // banner.append(secondaryBannerContainer);
+  // Replace the existing banner content
+  banner.innerHTML = '';
+  banner.append(primaryBannerContainer);
+  banner.append(secondaryBannerContainer);
 }
 
 function createPrimaryBanner(primaryBannerCollection) {
