@@ -1,60 +1,68 @@
-.footer-wrapper{
+.footer-wrapper {
     background-color: #011D23;
 }
-.footer_links{
+
+.footer-links {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
 }
+
 .footer-bottom-wrapper {
     background-color: #032830;
     width: 100%;
     margin-top: 30px;
 }
-.footer_social {
+
+.footer-social {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
 }
-.footer_app_links {
+
+.footer-app-links {
     display: flex;
     gap: 5px;
     margin-top: 20px;
     justify-content: center;
 }
+
 input#newsletter {
     height: 48px;
     border-radius: 6px 0 0 6px;
     border-color: #fff;
     padding-left: 14px;
 }
+
 form#newsletter-validate-detail {
     display: flex;
     flex-flow: row;
     width: 100%;
 }
 
-.fieldset.field.newsletter{
+.fieldset.field.newsletter {
     min-width: 220px;
-    margin: 0;
     width: 100%;
     display: table-cell;
     margin: 0;
     padding: 0;
     vertical-align: top;
 }
-.footer_links .footer-col .block-title a{
+
+.footer-links .footer-col .block-title a {
     margin: 25px 0 0;
     font-size: 14px;
     color: #c4d82e;
     font-weight: 600;
 }
-.footer_links .footer-col .links a {
+
+.footer-links .footer-col .links a {
     color: #fff;
 }
-.footer_links .footer-col li {
+
+.footer-links .footer-col li {
     color: #fff;
     margin-bottom: 8px;
 }

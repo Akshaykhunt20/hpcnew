@@ -486,10 +486,9 @@ input[type="text"], input[type="password"], input[type="url"], input[type="tel"]
     background-clip: padding-box;
     border: 1px solid #9ab3b8;
     border-radius: 1px;
-    font-family: 'DIN', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 14px;
     height: 40px;
-    line-height: 1.42857143;
+    line-height: 1.428;
     padding: 0 9px;
     vertical-align: baseline;
     width: 100%;
