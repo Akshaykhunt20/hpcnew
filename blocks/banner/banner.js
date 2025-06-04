@@ -29,29 +29,26 @@ export default function decorate(banner) {
 }
 
 async function fetchBannerData(banner) {
-  try {
-    const homePageCollection = await performMonolithGraphQLQuery(
-      getBannerQuery,
-      {},
-      true,
-      false,
-    );
+  const homePageCollection = await performMonolithGraphQLQuery(
+    getBannerQuery,
+    {},
+    true,
+    false,
+  );
 
-    const homepageBannerCollectionData = homePageCollection.data.getHomeMainBanner;
-    const primaryBannerCollection = homepageBannerCollectionData.primary_banner_items;
-    const secondaryBannerCollection = homepageBannerCollectionData.secondary_banner_items;
+  const homepageBannerCollectionData = homePageCollection.data.getHomeMainBanner;
+  const primaryBannerCollection = homepageBannerCollectionData.primary_banner_items;
+  const secondaryBannerCollection = homepageBannerCollectionData.secondary_banner_items;
 
-    // Create banners only after data is ready
-    const primaryBannerContainer = createPrimaryBanner(primaryBannerCollection);
-    const secondaryBannerContainer = createSecondaryBanner(secondaryBannerCollection);
+  // Create banners only after data is ready
+  const primaryBannerContainer = createPrimaryBanner(primaryBannerCollection);
+  const secondaryBannerContainer = createSecondaryBanner(secondaryBannerCollection);
 
-    // Replace loading state with actual content
-    banner.innerHTML = '';
-    banner.append(primaryBannerContainer);
-    banner.append(secondaryBannerContainer);
-  } catch (error) {
-    throw error;
-  }
+  // Replace loading state with actual content
+  banner.innerHTML = '';
+  banner.append(primaryBannerContainer);
+  banner.append(secondaryBannerContainer);
+
 }
 
 function createPrimaryBanner(primaryBannerCollection) {
