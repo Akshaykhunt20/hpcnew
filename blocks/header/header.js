@@ -14,7 +14,7 @@ import { renderAuthDropdown } from './renderAuthDropdown.js';
 import { rootLink } from '../../scripts/scripts.js';
 
 // media query match that indicates mobile/tablet width
-const isDesktop = window.matchMedia('(min-width: 900px)');
+const isDesktop = window.matchMedia('(min-width: 1025px)');
 
 const overlay = document.createElement('div');
 overlay.classList.add('overlay');
@@ -355,8 +355,20 @@ export default async function decorate(block) {
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
     </button>`;
+  hamburger.addEventListener('click', () => {
+    navWrapper.classList.toggle('active');
+    overlay.classList.toggle('show');
+    toggleMenu(nav, navSections);
+  });
+
+  document.querySelector('.close-icon').addEventListener('click', () => {
+    navWrapper.classList.remove('active');
+    overlay.classList.remove('show');
+    toggleMenu(nav, navSections, false);
+  });
 
   nav.prepend(hamburger);
+  nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
@@ -366,4 +378,39 @@ export default async function decorate(block) {
     () => !isDesktop.matches && toggleMenu(nav, navSections, false),
   );
   renderAuthDropdown(navTools);
+
+  const mainCategoryWrapperElms = document.querySelectorAll('.navigation-custom-menu .main-category-wrapper');
+  const categoryInnerElms = document.querySelectorAll('.navigation-custom-menu .category-inner');
+  const closeButton = document.querySelector('.close-menu .close-icon');
+
+  mainCategoryWrapperElms.forEach((mainCategoryWrapperElm) => {
+    mainCategoryWrapperElm.addEventListener('click', () => {
+      const isActive = mainCategoryWrapperElm.classList.contains('menu-item-active');
+
+      mainCategoryWrapperElms.forEach((elm) => elm.classList.remove('menu-item-active'));
+
+      if (!isActive) mainCategoryWrapperElm.classList.toggle('menu-item-active');
+    });
+  });
+
+  categoryInnerElms.forEach((categoryInnerElm) => {
+    categoryInnerElm.addEventListener('click', (e) => {
+      const isActive = categoryInnerElm.classList.contains('menu-item-inner-active');
+
+      e.stopPropagation();
+      categoryInnerElms.forEach((elm) => elm.classList.remove('menu-item-inner-active'));
+
+      if (!isActive) categoryInnerElm.classList.toggle('menu-item-inner-active');
+    });
+  });
+
+  closeButton.addEventListener('click', () => {
+    mainCategoryWrapperElms.forEach((mainCategoryWrapperElm) => {
+      mainCategoryWrapperElm.classList.remove('menu-item-active');
+    });
+
+    categoryInnerElms.forEach((categoryInnerElm) => {
+      categoryInnerElm.classList.remove('menu-item-inner-active');
+    });
+  });
 }

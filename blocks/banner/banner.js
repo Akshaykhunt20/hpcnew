@@ -48,7 +48,6 @@ async function fetchBannerData(banner) {
   banner.innerHTML = '';
   banner.append(primaryBannerContainer);
   banner.append(secondaryBannerContainer);
-
 }
 
 function createPrimaryBanner(primaryBannerCollection) {
