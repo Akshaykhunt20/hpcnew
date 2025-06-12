@@ -277,9 +277,9 @@ export default async function decorate(block) {
   /** Search */
   // TODO
   const search = document.createRange().createContextualFragment(`
-  <div class="search-wrapper nav-tools-wrapper">
+  <div class="search-wrapper">
     <button type="button" class="nav-search-button">Search</button>
-    <div class="nav-search-input nav-search-panel nav-tools-panel">
+    <div class="nav-search-input nav-search-panel">
       <form action="/search" method="GET">
         <input id="search" type="search" name="q" placeholder="Search" />
         <div id="search_autocomplete" class="search-autocomplete"></div>
@@ -301,23 +301,27 @@ export default async function decorate(block) {
   searchForm.action = rootLink('/search');
 
   async function toggleSearch(state) {
-    const show = state ?? !searchPanel.classList.contains('nav-tools-panel--show');
+    // const show = state ?? !searchPanel.classList.contains('nav-tools-panel--show');
 
-    searchPanel.classList.toggle('nav-tools-panel--show', show);
+    // searchPanel.classList.toggle('nav-tools-panel--show', show);
 
-    if (show) {
+    //if (show) {
       await import('./searchbar.js');
-      searchInput.focus();
-    }
+      //searchInput.focus();
+    //}
   }
 
-  navSections.querySelector('.nav-search-button').addEventListener('click', () => {
-    if (isDesktop.matches) {
-      toggleAllNavSections(navSections);
-      overlay.classList.remove('show');
-    }
-    toggleSearch();
+  searchInput.addEventListener('focus', () => {
+    toggleSearch(true);
   });
+
+  // navSections.querySelector('.nav-search-button').addEventListener('click', () => {
+  //   if (isDesktop.matches) {
+  //     toggleAllNavSections(navSections);
+  //     overlay.classList.remove('show');
+  //   }
+  //   toggleSearch();
+  // });
 
   // Close panels when clicking outside
   document.addEventListener('click', (e) => {
@@ -325,9 +329,9 @@ export default async function decorate(block) {
       toggleMiniCart(false);
     }
 
-    if (!searchPanel.contains(e.target) && !searchButton.contains(e.target)) {
-      toggleSearch(false);
-    }
+    // if (!searchPanel.contains(e.target) && !searchButton.contains(e.target)) {
+    //   toggleSearch(false);
+    // }
   });
 
   const navWrapper = document.createElement('div');

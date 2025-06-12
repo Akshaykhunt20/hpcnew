@@ -13,7 +13,8 @@
  */
 
 /* stylelint-disable no-empty-source */
-:root, .dropin-design {
+:root,
+.dropin-design {
   /* Adobe Commerce Dropin design tokens */
   --color-brand-300: #6d6d6d;
   --color-brand-500: #454545;
@@ -139,7 +140,12 @@
   src: local("Helvetica");
 }
 
-html, body {
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
   height: 100%;
 }
 
@@ -264,7 +270,7 @@ main pre {
   white-space: pre;
 }
 
-main > div {
+main>div {
   margin: var(--spacing-xbig) var(--spacing-small);
 }
 
@@ -380,7 +386,7 @@ main img {
 }
 
 /* sections */
-main > .section {
+main>.section {
   margin: var(--spacing-xbig) 0;
 }
 
@@ -388,18 +394,18 @@ main > .section {
   display: none;
 }
 
-main > .section > div {
-  max-width: 1200px;
+main>.section>div {
+  max-width: 1920px;
   margin: auto;
   padding: 0 var(--spacing-medium);
 }
 
-main > .section:first-of-type {
+main>.section:first-of-type {
   margin-top: 0;
 }
 
-@media (width >= 900px) {
-  main > .section > div {
+@media (width >=900px) {
+  main>.section>div {
     padding: 0 var(--spacing-big);
   }
 }
@@ -433,7 +439,7 @@ body.columns main {
   gap: var(--grid-4-gutters);
 }
 
-body.columns main > .section {
+body.columns main>.section {
   flex: 1;
   flex-basis: 100%;
   max-width: unset;
@@ -441,31 +447,31 @@ body.columns main > .section {
   padding: unset;
 }
 
-body.columns main > .section > div {
+body.columns main>.section>div {
   max-width: unset;
   padding: unset;
 }
 
-body.columns main > .section > div:not(:last-child) {
+body.columns main>.section>div:not(:last-child) {
   margin-bottom: var(--gap, unset);
 }
 
-body.columns main > .section:empty {
+body.columns main>.section:empty {
   display: none;
 }
 
-@media (width >= 600px) {
+@media (width >=600px) {
   body.columns main {
     padding: var(--spacing-large) var(--spacing-big);
   }
 }
 
-@media (width >= 900px) {
+@media (width >=900px) {
   body.columns main {
     flex-direction: row;
   }
 
-  body.columns main > .section {
+  body.columns main>.section {
     flex: 1;
     flex-basis: var(--column-width, auto);
   }
@@ -481,16 +487,38 @@ main[hidden] {
 
 
 
-input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type*="date"], input[type="email"] {
-    background: #fff;
-    background-clip: padding-box;
-    border: 1px solid #9ab3b8;
-    border-radius: 1px;
-    font-size: 14px;
-    height: 40px;
-    line-height: 1.428;
-    padding: 0 9px;
-    vertical-align: baseline;
-    width: 100%;
-    box-sizing: border-box;
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="tel"],
+input[type="search"],
+input[type="number"],
+input[type*="date"],
+input[type="email"] {
+  background: #fff;
+  background-clip: padding-box;
+  border: 1px solid #9ab3b8;
+  border-radius: 1px;
+  font-size: 14px;
+  height: 40px;
+  line-height: 1.428;
+  padding: 0 9px;
+  vertical-align: baseline;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.action.primary,
+.action-primary {
+  background-image: none;
+  background: #005568;
+  border: 1px solid #005568;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  padding: 7px 15px;
+  font-size: 1.4rem;
+  box-sizing: border-box;
+  vertical-align: middle;
 }

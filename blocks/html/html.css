@@ -1,7 +1,99 @@
-.category-slider-items{
+.category-slider-items {
     display: flex;
+
+    .category-slider-item {
+        a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin: 0 auto;
+            background: #F6E8DD;
+            padding: 20px 10px;
+            border-radius: 20px;
+            height: 100%;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        span {
+            font-size: 18px;
+            font-weight: 500;
+            color: #202020;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            overflow: hidden;
+        }
+    }
 }
 
-ul.wellness-goals {
-    display: flex;
+.shopby-wellness-wrapper {
+    .wellness-goals {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 23px;
+        margin: 0;
+    }
+
+    .wellness-goal {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        border-radius: 16px;
+
+        span {
+            position: absolute;
+            font-size: 24px;
+            color: #fff;
+            font-weight: 500;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 53%;
+            z-index: 1;
+        }
+
+        a {
+            position: relative;
+            display: block;
+
+            &::after {
+                content: '';
+                background: linear-gradient(179.84deg, rgba(255, 255, 255, 0) 36.04%, rgba(32, 32, 32, 0.5) 65.37%, rgba(32, 32, 32, 0.7) 84.86%, rgba(32, 32, 32, 0.9) 99.05%);
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 16px;
+                top: 0;
+            }
+
+            &:hover {
+                span {
+                    top: 50%;
+                    bottom: unset;
+                    transform: translate(-50%, -50%);
+                    font-size: 28px;
+                }
+
+                &::after {
+                    background-color: #202020B2;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+    }
 }
