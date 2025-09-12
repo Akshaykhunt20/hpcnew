@@ -292,23 +292,22 @@ export default async function decorate(block) {
 
   const searchPanel = navSections.querySelector('.nav-search-panel');
 
-  const searchButton = navSections.querySelector('.nav-search-button');
-
   const searchInput = searchPanel.querySelector('input');
 
   const searchForm = searchPanel.querySelector('form');
 
   searchForm.action = rootLink('/search');
 
-  async function toggleSearch(state) {
+  // eslint-disable-next-line
+  async function toggleSearch(state = null) {
     // const show = state ?? !searchPanel.classList.contains('nav-tools-panel--show');
 
     // searchPanel.classList.toggle('nav-tools-panel--show', show);
 
-    //if (show) {
-      await import('./searchbar.js');
-      //searchInput.focus();
-    //}
+    await import('./searchbar.js');
+    // if (show) {
+    //   searchInput.focus();
+    // }
   }
 
   searchInput.addEventListener('focus', () => {
@@ -328,10 +327,6 @@ export default async function decorate(block) {
     if (!minicartPanel.contains(e.target) && !cartButton.contains(e.target)) {
       toggleMiniCart(false);
     }
-
-    // if (!searchPanel.contains(e.target) && !searchButton.contains(e.target)) {
-    //   toggleSearch(false);
-    // }
   });
 
   const navWrapper = document.createElement('div');

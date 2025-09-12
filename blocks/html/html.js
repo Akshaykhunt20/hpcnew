@@ -1,6 +1,7 @@
+const { swiperInit } = await import('../../scripts/swiper/swiper-init.js');
+
 export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
-
   block.classList.add(`columns-${cols.length}-cols`);
 
   [...block.children].forEach((row) => {
@@ -39,4 +40,5 @@ export default function decorate(block) {
       processComments(col);
     });
   });
+  swiperInit('.swiper-container');
 }
