@@ -59,7 +59,7 @@ export default async function decorate(block) {
       allowAllProducts: false,
       imageCarousel: false,
       optimizeImages: true,
-      imageBaseWidth: 200,
+      imageBaseWidth: 240,
       listview: true,
       displayMode: '', // "" for plp || "PAGE" for category/catalog
       addToCart: async (...args) => {
