@@ -53,34 +53,6 @@ fieldset {
     }
 }
 
-.footer-links {
-    .footer-col {
-        .block-title {
-            margin: 25px 0 0;
-            font-size: 1.6rem;
-            color: #c4d82e;
-            font-weight: 600;
-            line-height: 1.5;
-
-            &.open-any-time {
-                color: #fff;
-            }
-        }
-
-        .links {
-            li {
-                color: #fff;
-                margin-bottom: 8px;
-            }
-
-            a {
-                color: #fff;
-                font-weight: normal;
-            }
-        }
-    }
-}
-
 .footer-social {
     display: flex;
     flex-wrap: wrap;
@@ -110,6 +82,36 @@ fieldset {
         }
     }
 }
+
+.footer-links {
+    .footer-col {
+        .block-title {
+            margin: 25px 0 0;
+            font-size: 1.6rem;
+            color: #c4d82e;
+            font-weight: 600;
+            line-height: 1.5;
+
+            &.open-any-time {
+                color: #fff;
+            }
+        }
+
+        .links {
+            li {
+                color: #fff;
+                margin-bottom: 8px;
+            }
+
+            a {
+                color: #fff;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+
 
 .facebook-icon {
     background-image: url('../../icons/facebook.svg');
@@ -162,20 +164,20 @@ fieldset {
 
         .footer-col {
             .block-title {
-                margin: 40px 0 15px 0;
+                margin: 40px 0 15px;
                 font-size: 16px;
             }
         }
     }
-
+     /* stylelint-disable */
     .footer_newsletter {
+    /* stylelint-enable */
         max-width: 350px;
     }
 }
 
 @media (width >=1280px) {
     .footer-wrapper {
-
         .footer-top-wrapper,
         .footer-bottom-container {
             width: 100%;
@@ -211,14 +213,12 @@ fieldset {
                 height: 20px;
                 display: inline-flex;
                 mask: url('../../icons/plus.svg') no-repeat center / contain;
-                -webkit-mask: url('../../icons/plus.svg') no-repeat center / contain;
                 background-color: #fff;
             }
 
             &.active {
                 &::after {
                     mask: url('../../icons/minus.svg') no-repeat center / contain;
-                    -webkit-mask: url('../../icons/minus.svg') no-repeat center / contain;
                 }
             }
         }

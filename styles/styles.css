@@ -510,7 +510,6 @@ input[type="email"] {
 
 .action.primary,
 .action-primary {
-  background-image: none;
   background: #005568;
   border: 1px solid #005568;
   color: #fff;
