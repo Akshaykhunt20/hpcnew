@@ -521,3 +521,9 @@ input[type="email"] {
   box-sizing: border-box;
   vertical-align: middle;
 }
+
+@layer common {
+  .relative {
+    position: relative;
+  }
+}
