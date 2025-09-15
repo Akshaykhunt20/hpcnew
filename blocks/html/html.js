@@ -9,8 +9,6 @@ export default async function decorate(block) {
     [...row.children].forEach((col) => {
       // Process HTML content to remove comments but keep their content
       const processComments = (element) => {
-        console.log(element);
-
         const walker = document.createTreeWalker(
           element,
           NodeFilter.SHOW_COMMENT,
@@ -51,12 +49,12 @@ export default async function decorate(block) {
       centeredSlides: false,
       spaceBetween: 30,
       pagination: {
-        el: ".swiper-pagination",
-        clickable: true
+        el: '.swiper-pagination',
+        clickable: true,
       },
       navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
     });
   });
@@ -68,12 +66,12 @@ export default async function decorate(block) {
       centeredSlides: false,
       spaceBetween: 30,
       pagination: {
-        el: ".swiper-pagination",
-        clickable: true
+        el: '.swiper-pagination',
+        clickable: true,
       },
       navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
     });
   });
