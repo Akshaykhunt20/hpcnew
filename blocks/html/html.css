@@ -61,14 +61,17 @@
             width: 53%;
             z-index: 1;
         }
-
+        /* stylelint-disable */
         a {
+        /* stylelint-enable */
             position: relative;
             display: block;
 
             &::after {
                 content: '';
+                /* stylelint-disable */
                 background: linear-gradient(179.84deg, rgba(255, 255, 255, 0) 36.04%, rgba(32, 32, 32, 0.5) 65.37%, rgba(32, 32, 32, 0.7) 84.86%, rgba(32, 32, 32, 0.9) 99.05%);
+                /* stylelint-enable */
                 display: block;
                 position: absolute;
                 width: 100%;

@@ -171,22 +171,19 @@ export default async function decorate(block) {
   block.append(footer);
 
   if (window.innerWidth < 769) {
-    const titles   = document.querySelectorAll('.footer-col .block-title');
+    const titles = document.querySelectorAll('.footer-col .block-title');
     const contents = document.querySelectorAll('.footer-col .block-content');
-    
-    console.log('test');
-    
-    titles.forEach(title => {
-      title.addEventListener('click', function() {
+    titles.forEach((title) => {
+      title.addEventListener('click', function handleFooterTitleClick() {
         // if any content is currently visible, hide them all and remove active classes
         const anyVisible = Array.from(contents).some(
-          content => getComputedStyle(content).display !== 'none'
+          (content) => getComputedStyle(content).display !== 'none',
         );
         if (anyVisible) {
-          contents.forEach(content => {
+          contents.forEach((content) => {
             content.style.display = 'none';
           });
-          titles.forEach(t => {
+          titles.forEach((t) => {
             t.classList.remove('active');
           });
         }
