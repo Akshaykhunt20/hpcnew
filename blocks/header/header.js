@@ -291,47 +291,24 @@ export default async function decorate(block) {
   navSections.append(search);
 
   const searchPanel = navSections.querySelector('.nav-search-panel');
-
-  const searchButton = navSections.querySelector('.nav-search-button');
-
   const searchInput = searchPanel.querySelector('input');
-
   const searchForm = searchPanel.querySelector('form');
 
   searchForm.action = rootLink('/search');
 
-  async function toggleSearch(state) {
-    // const show = state ?? !searchPanel.classList.contains('nav-tools-panel--show');
-
-    // searchPanel.classList.toggle('nav-tools-panel--show', show);
-
-    //if (show) {
-      await import('./searchbar.js');
-      //searchInput.focus();
-    //}
+  async function toggleSearch() {
+    await import('./searchbar.js');
   }
 
   searchInput.addEventListener('focus', () => {
     toggleSearch(true);
   });
 
-  // navSections.querySelector('.nav-search-button').addEventListener('click', () => {
-  //   if (isDesktop.matches) {
-  //     toggleAllNavSections(navSections);
-  //     overlay.classList.remove('show');
-  //   }
-  //   toggleSearch();
-  // });
-
   // Close panels when clicking outside
   document.addEventListener('click', (e) => {
     if (!minicartPanel.contains(e.target) && !cartButton.contains(e.target)) {
       toggleMiniCart(false);
     }
-
-    // if (!searchPanel.contains(e.target) && !searchButton.contains(e.target)) {
-    //   toggleSearch(false);
-    // }
   });
 
   const navWrapper = document.createElement('div');
@@ -355,6 +332,7 @@ export default async function decorate(block) {
 
   // hamburger for mobile
   const hamburger = document.createElement('div');
+
   hamburger.classList.add('nav-hamburger');
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>

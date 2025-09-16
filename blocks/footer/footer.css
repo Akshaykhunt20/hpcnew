@@ -87,6 +87,7 @@ fieldset {
     gap: 10px;
     margin-top: 20px;
 
+    /* stylelint-disable-next-line no-descending-specificity */
     a {
         display: flex;
         color: #fff;
@@ -162,12 +163,13 @@ fieldset {
 
         .footer-col {
             .block-title {
-                margin: 40px 0 15px 0;
+                margin: 40px 0 15px;
                 font-size: 16px;
             }
         }
     }
 
+    /* stylelint-disable-next-line selector-class-pattern */
     .footer_newsletter {
         max-width: 350px;
     }
@@ -175,13 +177,11 @@ fieldset {
 
 @media (width >=1280px) {
     .footer-wrapper {
-
         .footer-top-wrapper,
         .footer-bottom-container {
             width: 100%;
             max-width: 1920px;
-            padding-left: 40px;
-            padding-right: 40px;
+            padding-inline: 40px;
             margin: 0 auto;
         }
     }
@@ -211,14 +211,12 @@ fieldset {
                 height: 20px;
                 display: inline-flex;
                 mask: url('../../icons/plus.svg') no-repeat center / contain;
-                -webkit-mask: url('../../icons/plus.svg') no-repeat center / contain;
                 background-color: #fff;
             }
 
             &.active {
                 &::after {
                     mask: url('../../icons/minus.svg') no-repeat center / contain;
-                    -webkit-mask: url('../../icons/minus.svg') no-repeat center / contain;
                 }
             }
         }

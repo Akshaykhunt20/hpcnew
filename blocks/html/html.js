@@ -2,14 +2,10 @@ import { swiperInit } from '../../scripts/swiper-slider.js';
 import waitForElm from '../../scripts/waitForElm.js';
 
 export default async function decorate(block) {
-  const cols = [...block.firstElementChild.children];
-
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
       // Process HTML content to remove comments but keep their content
       const processComments = (element) => {
-        console.log(element);
-
         const walker = document.createTreeWalker(
           element,
           NodeFilter.SHOW_COMMENT,
@@ -50,12 +46,12 @@ export default async function decorate(block) {
       centeredSlides: false,
       spaceBetween: 30,
       pagination: {
-        el: ".swiper-pagination",
-        clickable: true
+        el: '.swiper-pagination',
+        clickable: true,
       },
       navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
     });
   });
@@ -67,12 +63,12 @@ export default async function decorate(block) {
       centeredSlides: false,
       spaceBetween: 30,
       pagination: {
-        el: ".swiper-pagination",
-        clickable: true
+        el: '.swiper-pagination',
+        clickable: true,
       },
       navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
     });
   });
