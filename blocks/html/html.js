@@ -1,6 +1,3 @@
-import { swiperInit } from '../../scripts/swiper-slider.js';
-import waitForElm from '../../scripts/waitForElm.js';
-
 export default async function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
@@ -39,40 +36,6 @@ export default async function decorate(block) {
         });
       };
       processComments(col);
-    });
-  });
-
-  waitForElm('.category-slider-items').then((elm) => {
-    swiperInit(elm, {
-      slidesPerView: 8,
-      loop: false,
-      centeredSlides: false,
-      spaceBetween: 30,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  });
-
-  waitForElm('.product-slider-items').then((elm) => {
-    swiperInit(elm, {
-      slidesPerView: 6,
-      loop: false,
-      centeredSlides: false,
-      spaceBetween: 30,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
     });
   });
 }
