@@ -53,34 +53,6 @@ fieldset {
     }
 }
 
-.footer-links {
-    .footer-col {
-        .block-title {
-            margin: 25px 0 0;
-            font-size: 1.6rem;
-            color: #c4d82e;
-            font-weight: 600;
-            line-height: 1.5;
-
-            &.open-any-time {
-                color: #fff;
-            }
-        }
-
-        .links {
-            li {
-                color: #fff;
-                margin-bottom: 8px;
-            }
-
-            a {
-                color: #fff;
-                font-weight: normal;
-            }
-        }
-    }
-}
-
 .footer-social {
     display: flex;
     flex-wrap: wrap;
@@ -111,6 +83,36 @@ fieldset {
         }
     }
 }
+
+.footer-links {
+    .footer-col {
+        .block-title {
+            margin: 25px 0 0;
+            font-size: 1.6rem;
+            color: #c4d82e;
+            font-weight: 600;
+            line-height: 1.5;
+
+            &.open-any-time {
+                color: #fff;
+            }
+        }
+
+        .links {
+            li {
+                color: #fff;
+                margin-bottom: 8px;
+            }
+
+            a {
+                color: #fff;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+
 
 .facebook-icon {
     background-image: url('../../icons/facebook.svg');

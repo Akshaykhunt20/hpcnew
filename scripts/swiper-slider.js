@@ -3,6 +3,7 @@ loadScript('/node_modules/swiper/swiper-bundle.min.js');
 loadCss('/node_modules/swiper/swiper-bundle.min.css');
 loadCss('/styles/swiper-slider.css');
 
+/* eslint-disable import/prefer-default-export */
 export function swiperInit(selector, {
   slidesPerView = 2,
   loop = true,

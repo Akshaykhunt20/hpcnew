@@ -1,4 +1,4 @@
-/* stylelint-disable no-descending-specificity */
+
 .category-slider-items {
     .category-slider-item {
     width: 182px;
@@ -62,8 +62,9 @@
             width: 53%;
             z-index: 1;
         }
-
+        /* stylelint-disable */
         a {
+        /* stylelint-enable */
             position: relative;
             display: block;
 
@@ -162,8 +163,9 @@ h3:not(.swiper h3) {
             opacity: 1;
         }
     }
-
+    /* stylelint-disable */
     .desktop-add-to-cart {
+    /* stylelint-enable */
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -200,7 +202,9 @@ h3:not(.swiper h3) {
         display: -webkit-box;
         word-break: break-word;
 
+        /* stylelint-disable */
         a {
+        /* stylelint-enable */
             color: #123036;
             font-size: 16px;
             line-height: 1.5;
@@ -225,4 +229,3 @@ h3:not(.swiper h3) {
         display: none;
     }
 }
-/* stylelint-enable no-descending-specificity */
