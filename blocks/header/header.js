@@ -291,36 +291,18 @@ export default async function decorate(block) {
   navSections.append(search);
 
   const searchPanel = navSections.querySelector('.nav-search-panel');
-
   const searchInput = searchPanel.querySelector('input');
-
   const searchForm = searchPanel.querySelector('form');
 
   searchForm.action = rootLink('/search');
 
-  // eslint-disable-next-line
-  async function toggleSearch(state = null) {
-    // const show = state ?? !searchPanel.classList.contains('nav-tools-panel--show');
-
-    // searchPanel.classList.toggle('nav-tools-panel--show', show);
-
+  async function toggleSearch() {
     await import('./searchbar.js');
-    // if (show) {
-    //   searchInput.focus();
-    // }
   }
 
   searchInput.addEventListener('focus', () => {
     toggleSearch(true);
   });
-
-  // navSections.querySelector('.nav-search-button').addEventListener('click', () => {
-  //   if (isDesktop.matches) {
-  //     toggleAllNavSections(navSections);
-  //     overlay.classList.remove('show');
-  //   }
-  //   toggleSearch();
-  // });
 
   // Close panels when clicking outside
   document.addEventListener('click', (e) => {
@@ -350,6 +332,7 @@ export default async function decorate(block) {
 
   // hamburger for mobile
   const hamburger = document.createElement('div');
+
   hamburger.classList.add('nav-hamburger');
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>

@@ -59,6 +59,7 @@ fieldset {
     gap: 10px;
     margin-top: 20px;
 
+    /* stylelint-disable-next-line no-descending-specificity */
     a {
         display: flex;
         color: #fff;
@@ -169,9 +170,9 @@ fieldset {
             }
         }
     }
-     /* stylelint-disable */
+
+    /* stylelint-disable-next-line selector-class-pattern */
     .footer_newsletter {
-    /* stylelint-enable */
         max-width: 350px;
     }
 }
@@ -182,8 +183,7 @@ fieldset {
         .footer-bottom-container {
             width: 100%;
             max-width: 1920px;
-            padding-left: 40px;
-            padding-right: 40px;
+            padding-inline: 40px;
             margin: 0 auto;
         }
     }

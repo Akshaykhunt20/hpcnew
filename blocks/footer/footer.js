@@ -173,8 +173,9 @@ export default async function decorate(block) {
   if (window.innerWidth < 769) {
     const titles = document.querySelectorAll('.footer-col .block-title');
     const contents = document.querySelectorAll('.footer-col .block-content');
+
     titles.forEach((title) => {
-      title.addEventListener('click', function handleFooterTitleClick() {
+      title.addEventListener('click', () => {
         // if any content is currently visible, hide them all and remove active classes
         const anyVisible = Array.from(contents).some(
           (content) => getComputedStyle(content).display !== 'none',
@@ -188,11 +189,11 @@ export default async function decorate(block) {
           });
         }
 
-        // show the clicked one’s content
-        const next = this.nextElementSibling;
+        // show the clicked one's content
+        const next = title.nextElementSibling;
         if (next && next.classList.contains('block-content')) {
           next.style.display = 'block';
-          this.classList.add('active');
+          title.classList.add('active');
         }
       });
     });

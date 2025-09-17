@@ -1,6 +1,6 @@
-import { Swiper } from 'swiper/swiper-bundle.min.js';
-
-loadCss('swiper/swiper-bundle.min.css');
+// Use a script tag to load Swiper instead of ES module import
+loadScript('/node_modules/swiper/swiper-bundle.min.js');
+loadCss('/node_modules/swiper/swiper-bundle.min.css');
 loadCss('/styles/swiper-slider.css');
 
 /* eslint-disable import/prefer-default-export */
@@ -20,7 +20,7 @@ export function swiperInit(selector, {
 }) {
   if (!selector) {
     console.error('Selector is required');
-    return;
+    return null;
   }
 
   try {
@@ -30,11 +30,11 @@ export function swiperInit(selector, {
 
     if (!element) {
       console.error(`Element not found: ${selector}`);
-      return;
+      return null;
     }
 
     // Initialize Swiper with the DOM element
-    const swiper = new Swiper(element, {
+    const swiper = new window.Swiper(element, {
       slidesPerView,
       loop,
       centeredSlides,
@@ -43,9 +43,10 @@ export function swiperInit(selector, {
       navigation,
     });
 
-    console.error('Swiper initialized:', swiper);
+    return swiper;
   } catch (error) {
     console.error('Error in swiperInit:', error);
+    return null;
   }
 }
 
@@ -55,3 +56,15 @@ function loadCss(url) {
   link.href = url;
   document.head.appendChild(link);
 }
+
+function loadScript(url) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = url;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
+    document.head.appendChild(script);
+  });
+}
+
+export default swiperInit;

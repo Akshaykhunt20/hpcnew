@@ -6,9 +6,8 @@ export default function waitForElm(selector) {
     }
 
     const observer = new MutationObserver(() => {
-      const element = document.querySelector(selector);
-      if (element) {
-        resolve(element);
+      if (document.querySelector(selector)) {
+        resolve(document.querySelector(selector));
         observer.disconnect();
       }
     });

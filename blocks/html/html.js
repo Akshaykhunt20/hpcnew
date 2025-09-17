@@ -1,7 +1,4 @@
 export default async function decorate(block) {
-  const cols = [...block.firstElementChild.children];
-  block.classList.add(`columns-${cols.length}-cols`);
-
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
       // Process HTML content to remove comments but keep their content
