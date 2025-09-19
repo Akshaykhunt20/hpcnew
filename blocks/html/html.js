@@ -1,3 +1,6 @@
+import { swiperInit } from '../../scripts/swiper-slider.js';
+import waitForElm from '../../scripts/waitForElm.js';
+
 export default async function decorate(block) {
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
@@ -34,5 +37,47 @@ export default async function decorate(block) {
       };
       processComments(col);
     });
+  });
+
+  waitForElm('.category-slider-items').then(async (elm) => {
+    try {
+      await swiperInit(elm, {
+        slidesPerView: 8,
+        loop: false,
+        centeredSlides: false,
+        spaceBetween: 30,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    } catch (error) {
+      console.error('Error initializing category slider:', error);
+    }
+  });
+
+  waitForElm('.product-slider-items').then(async (elm) => {
+    try {
+      await swiperInit(elm, {
+        slidesPerView: 6,
+        loop: false,
+        centeredSlides: false,
+        spaceBetween: 30,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    } catch (error) {
+      console.error('Error initializing product slider:', error);
+    }
   });
 }
