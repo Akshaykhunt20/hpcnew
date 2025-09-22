@@ -60,7 +60,7 @@ export default async function decorate(block) {
       imageCarousel: false,
       optimizeImages: true,
       imageBaseWidth: 240,
-      listview: true,
+      listview: false,
       displayMode: '', // "" for plp || "PAGE" for category/catalog
       addToCart: async (...args) => {
         const { addProductsToCart } = await import('../../scripts/__dropins__/storefront-cart/api.js');

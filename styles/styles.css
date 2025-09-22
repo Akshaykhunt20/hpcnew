@@ -171,7 +171,7 @@ body:not(.appear) {
 
 header {
   grid-row: 1;
-  height: var(--nav-height);
+  min-height: 145px;
 }
 
 main {
