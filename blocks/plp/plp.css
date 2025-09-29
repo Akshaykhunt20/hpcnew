@@ -1,3 +1,9 @@
 .banner-wrapper{
     max-width: 100% !important
 }
+
+.plp-wrapper {
+    max-width: 1440px !important;
+    margin: 0 auto !important;
+    padding-inline: 20px !important;
+}

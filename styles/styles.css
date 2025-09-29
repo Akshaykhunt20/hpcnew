@@ -171,7 +171,13 @@ body:not(.appear) {
 
 header {
   grid-row: 1;
-  height: var(--nav-height);
+  min-height: 145px;
+}
+
+@media (width <=1024px) {
+  header {
+    min-height: 65px;
+  }
 }
 
 main {
