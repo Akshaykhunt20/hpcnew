@@ -1,6 +1,6 @@
 // Use a script tag to load Swiper instead of ES module import
-const swiperPromise = loadScript('/node_modules/swiper/swiper-bundle.min.js');
-loadCss('/node_modules/swiper/swiper-bundle.min.css');
+const swiperPromise = loadScript('/scripts/swiper-bundle.min.js');
+loadCss('/scripts/swiper-bundle.min.css');
 loadCss('/styles/swiper-slider.css');
 
 /* eslint-disable import/prefer-default-export */
