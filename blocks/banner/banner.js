@@ -29,6 +29,7 @@ const getBannerQuery = `query{
 `;
 
 export default function decorate(banner) {
+
   // Add loading state immediately
   const loadingPlaceholder = document.createElement('div');
   loadingPlaceholder.classList.add('banner-loading');
@@ -66,9 +67,9 @@ function createPrimaryBanner(bannerCollection) {
     bannerElement.classList.add('banner-item');
 
     // Create and set up the image element
-    const bannerImageHtml = createImageStructure(bannerItem.banner_image, bannerItem.image_alt);
-    bannerElement.appendChild(bannerImageHtml);
-
+    const bannerImageHref = createHrefElement(bannerItem.url, bannerItem.image_alt);
+    bannerImageHref.appendChild(createImageStructure(bannerItem.banner_image, bannerItem.image_alt));
+    bannerElement.appendChild(bannerImageHref);
     bannerContainer.appendChild(bannerElement);
   });
   return bannerContainer;
@@ -99,6 +100,15 @@ function createSecondaryBanner(secondaryBannerContainer) {
   secondBannerContainer.appendChild(leftSideTop);
   secondBannerContainer.appendChild(leftSideBootom);
   return secondBannerContainer;
+}
+
+
+function createHrefElement(bannerUrl, bannerAlt) {
+  const bannerLink = document.createElement('a');
+  bannerLink.href = bannerUrl;
+  bannerLink.target = '_blank';
+  bannerLink.alt = bannerAlt;
+  return bannerLink;
 }
 
 function createImageStructure(bannerItem, bannerAlt) {

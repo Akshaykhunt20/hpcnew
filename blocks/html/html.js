@@ -1,5 +1,6 @@
 import { swiperInit } from '../../scripts/swiper-slider.js';
 import waitForElm from '../../scripts/waitForElm.js';
+import {getConfigValue } from '../../scripts/configs.js';
 
 export default async function decorate(block) {
   [...block.children].forEach((row) => {
@@ -80,4 +81,31 @@ export default async function decorate(block) {
       console.error('Error initializing product slider:', error);
     }
   });
+
+  waitForElm('.blog-html').then(async (elm) => {
+    await
+    loadFile('blog-html', 'blog.html');
+  });
+
+  waitForElm('.healthy-goals').then(async (elm) => {
+    await
+    loadFile('healthy-goals', 'shopy_by_dietary.html');
+  });
+
+  waitForElm('.shopyby-wellness').then(async (elm) => {
+    await
+    loadFile('shopyby-wellness', 'shopy_by_wellness.html');
+  });
+  
+}
+
+async function loadFile(selectorClass, filePath) {
+  const storeViewCode = getConfigValue('headers.cs.Magento-Store-View-Code');
+  const storeUrl = getConfigValue('analytics.store-url');
+
+  const fileUrl = `${storeUrl}/media/bytestechnolab/homepage/${storeViewCode}/${filePath}`;
+  const loadFile = await fetch(fileUrl);
+  const loadFileHtml = await loadFile.text();
+  const selectClass = document.querySelector(`.${selectorClass}`);
+  selectClass.innerHTML = loadFileHtml;
 }
