@@ -29,12 +29,10 @@ const getBannerQuery = `query{
 `;
 
 export default function decorate(banner) {
-
   // Add loading state immediately
   const loadingPlaceholder = document.createElement('div');
   loadingPlaceholder.classList.add('banner-loading');
   banner.appendChild(loadingPlaceholder);
-
   // Fetch data in background
   fetchBannerData(banner);
 }
@@ -60,7 +58,6 @@ function createPrimaryBanner(bannerCollection) {
   // Create a container for banners
   const bannerContainer = document.createElement('div');
   bannerContainer.classList.add('primary-banner-container');
-
   // Loop through banner collection and create banner items
   bannerCollection.forEach((bannerItem) => {
     const bannerElement = document.createElement('div');
@@ -68,40 +65,14 @@ function createPrimaryBanner(bannerCollection) {
 
     // Create and set up the image element
     const bannerImageHref = createHrefElement(bannerItem.url, bannerItem.image_alt);
-    bannerImageHref.appendChild(createImageStructure(bannerItem.banner_image, bannerItem.image_alt));
+    const bannerImage = bannerItem.banner_image;
+    const bannerAlt = bannerItem.image_alt;
+    bannerImageHref.appendChild(createImageStructure(bannerImage, bannerAlt));
     bannerElement.appendChild(bannerImageHref);
     bannerContainer.appendChild(bannerElement);
   });
   return bannerContainer;
 }
-
-function createSecondaryBanner(secondaryBannerContainer) {
-  // Create a container for banners
-  const secondBannerContainer = document.createElement('div');
-  secondBannerContainer.classList.add('secondary-banner-container');
-
-  const leftSideTop = document.createElement('div');
-  leftSideTop.classList.add('secondary-banner-left-side-images-top');
-
-  const leftSideBootom = document.createElement('div');
-  leftSideBootom.classList.add('secondary-banner-left-side-images-bottom');
-
-  if (secondaryBannerContainer.length > 0) {
-    secondaryBannerContainer.forEach((bannerItem) => {
-      const secondBannerElement = document.createElement('div');
-      secondBannerElement.classList.add('banner-item');
-
-      const bannerImageHtml = createImageStructure(bannerItem.banner_image, bannerItem.banner_name);
-      secondBannerElement.appendChild(bannerImageHtml);
-
-      secondBannerContainer.appendChild(secondBannerElement);
-    });
-  }
-  secondBannerContainer.appendChild(leftSideTop);
-  secondBannerContainer.appendChild(leftSideBootom);
-  return secondBannerContainer;
-}
-
 
 function createHrefElement(bannerUrl, bannerAlt) {
   const bannerLink = document.createElement('a');

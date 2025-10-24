@@ -82,21 +82,17 @@ export default async function decorate(block) {
     }
   });
 
-  waitForElm('.blog-html').then(async (elm) => {
-    await
-      loadFile('blog-html', 'blog.html');
+  waitForElm('.blog-html').then(async () => {
+    await loadFile('blog-html', 'blog.html');
   });
 
-  waitForElm('.healthy-goals').then(async (elm) => {
-    await
-      loadFile('healthy-goals', 'shopy_by_dietary.html');
+  waitForElm('.healthy-goals').then(async () => {
+    await loadFile('healthy-goals', 'shopy_by_dietary.html');
   });
 
-  waitForElm('.shopyby-wellness').then(async (elm) => {
-    await
-      loadFile('shopyby-wellness', 'shopy_by_wellness.html');
+  waitForElm('.shopyby-wellness').then(async () => {
+    await loadFile('shopyby-wellness', 'shopy_by_wellness.html');
   });
-
 }
 
 async function loadFile(selectorClass, filePath) {
@@ -104,8 +100,8 @@ async function loadFile(selectorClass, filePath) {
   const storeUrl = getConfigValue('analytics.store-url');
 
   const fileUrl = `${storeUrl}/media/bytestechnolab/homepage/${storeViewCode}/${filePath}`;
-  const loadFile = await fetch(fileUrl);
-  const loadFileHtml = await loadFile.text();
+  const loadFileInMagento = await fetch(fileUrl);
+  const loadFileHtml = await loadFileInMagento.text();
   const selectClass = document.querySelector(`.${selectorClass}`);
   selectClass.innerHTML = loadFileHtml;
 }
