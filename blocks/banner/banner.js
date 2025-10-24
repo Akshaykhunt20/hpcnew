@@ -1,19 +1,29 @@
 import { performMonolithGraphQLQuery } from '../../scripts/commerce.js';
 
 const getBannerQuery = `query{
-  getHomeMainBanner(websiteId: 1){
-    primary_banner_items{
-      banner_name
-      image_alt
+  getHomeMainBanner(
+    websiteId: 1
+    banner_type: "primary_banner"
+    is_mobile: 0
+    storeId: 1
+  ) {
+    banner_items {
       banner_image
-      url
-    }
-    secondary_banner_items{
       banner_name
+      end_date
+      id
       image_alt
-      banner_image
+      sort_order
+      start_date
       url
+      website
     }
+    bytestechnolabbanner_general_enabled
+    error
+    right_down_image
+    right_down_image_click_url
+    right_up_image
+    right_up_image_click_url
   }
 }
 `;
@@ -35,28 +45,23 @@ async function fetchBannerData(banner) {
     true,
     false,
   );
-
   const homepageBannerCollectionData = homePageCollection.data.getHomeMainBanner;
-  const primaryBannerCollection = homepageBannerCollectionData.primary_banner_items;
-  const secondaryBannerCollection = homepageBannerCollectionData.secondary_banner_items;
+  const bannerCollection = homepageBannerCollectionData.banner_items;
 
   // Create banners only after data is ready
-  const primaryBannerContainer = createPrimaryBanner(primaryBannerCollection);
-  const secondaryBannerContainer = createSecondaryBanner(secondaryBannerCollection);
+  const primaryBannerContainer = createPrimaryBanner(bannerCollection);
 
-  // Replace loading state with actual content
   banner.innerHTML = '';
   banner.append(primaryBannerContainer);
-  banner.append(secondaryBannerContainer);
 }
 
-function createPrimaryBanner(primaryBannerCollection) {
+function createPrimaryBanner(bannerCollection) {
   // Create a container for banners
   const bannerContainer = document.createElement('div');
   bannerContainer.classList.add('primary-banner-container');
 
   // Loop through banner collection and create banner items
-  primaryBannerCollection.forEach((bannerItem) => {
+  bannerCollection.forEach((bannerItem) => {
     const bannerElement = document.createElement('div');
     bannerElement.classList.add('banner-item');
 
