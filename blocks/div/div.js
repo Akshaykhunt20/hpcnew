@@ -6,7 +6,7 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
       const code = col.querySelector('code');
-      if(code){
+      if (code) {
         const divWrapper = code.textContent;
         const temp = document.createElement('div');
         temp.className = divWrapper;
