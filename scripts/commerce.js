@@ -254,6 +254,24 @@ export async function fetchIndex(indexFile, pageSize = 500) {
 }
 
 /**
+ * Performs a GraphQL query against the commerce monolith.
+ * @param {string} query - GraphQL query string
+ * @param {Object} [variables={}] - GraphQL variables
+ * @param {boolean} [useCoreEndpoint=true] - When false, use CS endpoint instead
+ * @param {boolean} [_useCache=false] - Reserved for future caching options
+ * @returns {Promise<Object>} Parsed GraphQL response
+ */
+export async function performMonolithGraphQLQuery(
+  query,
+  variables = {},
+  useCoreEndpoint = true,
+  _useCache = false,
+) {
+  const client = useCoreEndpoint ? CORE_FETCH_GRAPHQL : CS_FETCH_GRAPHQL;
+  return client.fetchGraphQl(query, { variables });
+}
+
+/**
  * Loads commerce-specific eager content
  */
 export async function loadCommerceEager() {
