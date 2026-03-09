@@ -1,13 +1,15 @@
 footer {
-    background-color: var(--color-neutral-100);
+    background-color: var(--color-footer-bg);
     font: var(--type-body-2-default-font);
     letter-spacing: var(--type-body-2-default-letter-spacing);
+    color: var(--color-neutral-50);
 }
 
 footer .footer > div {
     margin: auto;
-    max-width: 1200px;
-    padding: 40px 24px 24px;
+    max-width: 1920px;
+    padding: 40px 20px 24px;
+    color: var(--color-neutral-50);
 }
 
 footer .footer p {
@@ -66,8 +68,159 @@ footer .footer p {
     margin-bottom: var(--spacing-small);
 }
 
+footer .section.newsletter-section {
+    grid-column: 1 / -1;
+}
+
+footer .section {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 20px;
+    justify-content: space-between;
+
+    .customer-service-wrapper,
+    .my-account-wrapper,
+    .company-information-wrapper,
+    .contact-us-wrapper {
+        @media(min-width: 769px) {
+            grid-row: 1/3;
+        }
+    }
+
+    .ways-to-shop-wrapper {
+        @media(min-width: 769px) {
+            grid-row: 2;
+            grid-column: 4;
+        }
+    }
+}
+
+footer .section .block {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+footer .section .block h3 {
+    font-size: 16px;
+    color: #c4d82e;
+    font-weight: 700;
+    margin: 0;
+    line-height: normal;
+}
+
+footer .section .block ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+}
+
+footer .section .block ul li a {
+    color: var(--color-neutral-50);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+/* Footer accordion: mobile only (< 769px) */
+@media (max-width: 768px) {
+    footer .section {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    footer .section .block.footer-accordion-section {
+        border-bottom: 1px solid var(--color-neutral-50);
+        gap: 0;
+    }
+
+    footer .section .block.footer-accordion-section:last-child {
+        border-bottom: none;
+    }
+
+    footer .section .block.footer-accordion-section h3 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        padding-right: 28px;
+    }
+
+    footer .section .block.footer-accordion-section h3::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        width: 12px;
+        height: 12px;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: translateY(-30%) rotate(45deg);
+        transition: transform 0.2s ease;
+    }
+
+    footer .section .block.footer-accordion-section h3[aria-expanded="true"]::after {
+        transform: translateY(-50%) rotate(-135deg);
+    }
+
+    footer .section .block.footer-accordion-section h3 + ul {
+        max-height: 0;
+        overflow: hidden;
+        padding-top: 0;
+        margin: 0;
+        transition: max-height 0.25s ease;
+    }
+
+    footer .section .block.footer-accordion-section h3[aria-expanded="true"] + ul {
+        max-height: 500px;
+        padding-bottom: 16px;
+    }
+}
+
 @media (min-width: 900px) {
     footer .footer > div {
         padding: 40px 32px 24px;
     }
+}
+
+/* Newsletter section after footer content */
+.footer__newsletter {
+    margin-top: var(--spacing-xl, 2rem);
+    padding-top: var(--spacing-l, 1.5rem);
+    border-top: 1px solid var(--color-neutral-600, #4b5563);
+}
+
+.footer__newsletter .newsletter__title {
+    color: var(--color-neutral-50);
+}
+
+.footer__newsletter .newsletter__input {
+    background-color: var(--color-neutral-800, #1f2937);
+    border-color: var(--color-neutral-600, #4b5563);
+    color: var(--color-neutral-50);
+}
+
+.footer__newsletter .newsletter__input::placeholder {
+    color: var(--color-neutral-500, #6b7280);
+}
+
+.footer__newsletter .newsletter__submit {
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-900);
+}
+
+.footer__newsletter .newsletter__submit:hover:not(:disabled) {
+    background-color: var(--color-neutral-100);
 }

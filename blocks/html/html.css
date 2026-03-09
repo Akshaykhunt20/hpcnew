@@ -144,10 +144,6 @@
     box-sizing: content-box;
 }
 
-h3:not(.swiper h3) {
-    display: none;
-}
-
 .product-item-info {
     transition: transform .2s;
     position: relative;

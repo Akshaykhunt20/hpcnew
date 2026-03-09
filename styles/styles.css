@@ -46,6 +46,7 @@
   --color-action-button-hover: var(--color-neutral-300);
   --color-opacity-16: rgb(255 255 255 / 16%);
   --color-opacity-24: rgb(255 255 255 / 24%);
+  --color-footer-bg: #011D23;
   --grid-1-columns: 4;
   --grid-1-margins: 0;
   --grid-1-gutters: 16px;
