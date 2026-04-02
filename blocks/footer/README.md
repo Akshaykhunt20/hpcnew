@@ -22,7 +22,7 @@ No localStorage keys are used directly by this block.
 
 #### Event Listeners
 
-None. The embedded newsletter block handles its own form and modal events.
+None. The embedded newsletter block handles its own form and popup feedback behavior.
 
 #### Event Emitters
 
@@ -54,19 +54,19 @@ None.
 
 ### Newsletter
 
-- After all footer content and accordion setup, the block dynamically loads the newsletter block (CSS + `newsletter.js` decorator) and appends it inside a wrapper (`.footer__newsletter`). The newsletter provides an email input and submit button and shows success/error in a modal.
+- After all footer content and accordion setup, the block dynamically loads the newsletter block (CSS + `newsletter.js` decorator) and appends it inside a wrapper (`.footer__newsletter`). The newsletter provides an email input and submit button and shows success/error feedback in a popup modal.
 
 ## User Interaction Flows
 
 1. **Desktop**: Footer shows link sections in a grid; store switcher (if any) opens a modal to change store/view.
 2. **Mobile**: Section headings are clickable; tapping toggles the list below. Store switcher and newsletter behave the same as desktop.
-3. **Newsletter**: User enters email and submits; validation and GraphQL subscription run; result is shown in a modal (success or error).
+3. **Newsletter**: User enters email and submits; validation and GraphQL subscription run; result is shown in a popup modal (success or error).
 
 ## Error Handling
 
 - **Footer fragment load failure**: Caught in try/catch; `console.warn` is used; block still renders with empty content and (if multistore) store switcher and newsletter.
 - **Store switcher fragment failure**: On load error, `console.error` is used and the function returns early so the rest of the footer (including fragment content) is not rendered when multistore is true.
-- **Newsletter**: Errors are handled inside the newsletter block (validation and API errors shown in the modal).
+- **Newsletter**: Errors are handled inside the newsletter block (validation and API errors shown in popup modal).
 
 ## Files
 

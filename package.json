@@ -32,6 +32,7 @@
     "@adobe/aem-cli": "^16.5.8",
     "@babel/eslint-parser": "7.28.6",
     "@dropins/build-tools": "1.0.1",
+    "esbuild": "^0.27.3",
     "eslint": "8.57.1",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.32.0",
@@ -57,6 +58,7 @@
     "@dropins/storefront-recommendations": "~3.0.0",
     "@dropins/storefront-wishlist": "~3.1.0",
     "@dropins/tools": "~1.7.0",
-    "swiper": "^11.2.10"
+    "swiper": "^11.2.10",
+    "@adobe-commerce/commerce-extensibility-tools": "^3.3.0"
   }
 }
